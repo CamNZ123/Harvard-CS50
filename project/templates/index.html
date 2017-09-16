@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <table border = "1" cellpadding = "5" cellspacing = "5">
+
+    <tr>
+        <td><b> Student </b></td>
+        <td><b> Here?</b></td>
+    </tr>
+    {% if count != 0 %}
+        {% for student in students %}
+            <tr>
+                <td>{{student["first_name"]}} {{student["last_name"]}}</td>
+                <td>{{student["here_or_not"]}}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="2">No students</td>
+        </tr>
+    {% endif %}
+{% endblock %}

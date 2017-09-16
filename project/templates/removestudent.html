@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove Students
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('removestudent') }}" method="post">
+        <fieldset>
+            <table>
+                <tr>
+                    <th><b>Name</b></th>
+                    <th><b>Remove?</b></th>
+                </tr>
+                    {% set count = [0] %}
+                    {% for student in students %}
+                        <div class="form-group">
+                            <tr>
+                                <td><p>{{ student["first_name"] }} {{ student["last_name"] }} </p> </td>
+                                <td><input type="checkbox" name="student{{ count }}" value="{{student["first_name"]}}" /></td>
+                            </tr>
+                        </div>
+                        {% if count.append(count.pop() + 1) %}{% endif %}
+                    {% endfor %}
+            </table>
+            <div class="form-group" style="margin-top: 20px"> <button class="btn btn-default" type="submit">Submit</button> </div>
+        </fieldset>
+    </form>
+{% endblock %}

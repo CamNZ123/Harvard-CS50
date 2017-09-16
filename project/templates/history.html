@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('history') }}" method="post">
+        <fieldset>
+            <table>
+                <tr>
+                    <th><b>Date</b></th>
+                    <th><b>Were they here?</b></th>
+                </tr>
+                    {% if count != 0 %}
+                        {% set count = [0] %}
+                        {% for row in student %}
+                            <tr>
+                                <td><p>{{row["time"]}} </p> </td>
+                                <td><p>{{row["here_or_not"]}}</p></td>
+                            </tr>
+                            {% if count.append(count.pop() + 1) %}{% endif %}
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="2"><p>No history for this student</p> </td>
+                    </tr>
+                    {% endif %}
+            </table>
+            <div class="form-group" style="margin-top: 20px"> <button class="btn btn-default" type="submit">Back</button> </div>
+        </fieldset>
+    </form>
+{% endblock %}

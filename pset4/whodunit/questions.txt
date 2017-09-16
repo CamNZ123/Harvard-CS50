@@ -1,0 +1,56 @@
+1. What’s stdint.h?
+    
+    #include <stdint.h> includes declarations of many integer types, such as uint32_t and int16_t.
+
+2. What’s the point of using uint8_t, uint32_t, int32_t, and uint16_t in a program?
+
+    uint X _t is a command to declare an unsigned integer with X bits
+    int X _t is a command to declare an signed integer with X bits
+
+3. How many bytes is a BYTE, a DWORD, a LONG, and a WORD, respectively?
+
+    1, 4, 4, 2
+
+4. What (in ASCII, decimal, or hexadecimal) must the first two bytes of any BMP file be? Leading bytes used to identify file formats (with high probability) are generally called "magic numbers."
+
+    (In Hexadecimal) 42 4D
+
+5. What’s the difference between bfSize and biSize?
+
+    bisize is the number of bytes required by the structure.
+    bfsize is the number of bytes the structure contains.
+
+6. What does it mean if biHeight is negative?
+
+    It is a top-down image with the origin being the top-left corner.
+    If it is positive then it would be the opposite.
+
+7. What field in BITMAPINFOHEADER specifies the BMP’s color depth (i.e., bits per pixel)?
+
+    biBitCount.
+
+8. Why might fopen return NULL in lines 24 and 32 of copy.c?
+
+    If the file could not be opened. The file might not be there or it might be corrupted.
+
+9. Why is the third argument to fread always 1 in our code?
+
+    The program can only read one RGBTRIPLE at a time.
+
+10. What value does line 65 of copy.c assign to padding if bi.biWidth is 3?
+
+    int padding =  (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+    int padding =  (4 - (3 * sizeof(3)) % 4) % 4;
+    int padding =  (4 - (9) % 4) % 4;
+    int padding =  (4 - (9) % 4) % 4;
+    int padding =  (4 - 1) % 4;
+    int padding =  3 % 4;
+    int padding =  1;
+
+11. What does fseek do?
+
+    Looks for the next pixel. It will also skip over all of the padding.
+    
+12. What is SEEK_CUR?
+    
+    A constant which defines the offset relative to the current file position.

@@ -1,0 +1,33 @@
+0. What is pneumonoultramicroscopicsilicovolcanoconiosis?
+
+    The longest word is the large dictionary used as the limit.
+
+1. According to its man page, what does getrusage do?
+
+    Gives the user info about the execution of the program. In this program it gives the user the time taken.
+
+2. Per that same man page, how many members are in a variable of type struct rusage?
+
+    16.
+
+3. Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+
+    C requires passing structs by reference in functions. If you did it by value, the size would be too large.
+
+4. Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file. In other words, convince us that you indeed understand how that function’s for loop works.
+
+    For each letter in the file it will go through and check if it is in the dictionary.
+    
+    If is the letter is a letter or a apostrophe, it gets added to the word.
+    If is has a number, it is ignored.
+    If is is bigger then the word limit, it is ignored.
+    
+    If the word isn't ignored it is checked for spelling.
+        
+5. Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s" to read whole words at a time? Put another way, what problems might arise by relying on fscanf alone?
+
+    To check for invalid digits (numbers and ?!@#$$%^&*()[]{};:)
+
+6. Why do you think we declared the parameters for check and load as const (which means "constant")?
+
+    Becuase word LENGTH and DICTIONARY are contants

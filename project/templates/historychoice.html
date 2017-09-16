@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History Choice
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('historychoice') }}" method="post">
+        <fieldset>
+            <select name="students">
+                    {% set count = [0] %}
+                    {% for student in students %}
+                        <div class="form-group">
+                            <option value="{{student['count_id']}}">{{student["first_name"]}} {{student["last_name"]}}</option>
+                        </div>
+                        {% if count.append(count.pop() + 1) %}{% endif %}
+                    {% endfor %}
+            </select>
+            <div class="form-group" style="margin-top: 20px"> <button class="btn btn-default" type="submit">Submit</button> </div>
+        </fieldset>
+    </form>
+{% endblock %}
