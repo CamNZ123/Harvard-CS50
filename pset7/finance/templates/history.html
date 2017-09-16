@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table border = "1" cellpadding = "5" cellspacing = "5">
+        <tr>
+            <th>
+                <h4>Date</h4>
+            </th>
+            <th>
+                <h4>Bought or Sold?</h4>
+            </th>
+            <th>
+                <h4>Symbol</h4>
+            </th>
+            <th>
+                <h4>Price change</h4>
+            </th>
+            <th>
+                <h4>Shares</h4>
+            </th>
+        </tr>
+    {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction["Time"] }}</td>
+            <td>{{ transaction["buyorsell"] }}</td>
+            <td>{{ transaction["Symbol"] }}</td>
+            <td>{{ transaction["Price_change"] }}</td>
+            <td>{{ transaction["Shares_boughtorsold"] }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

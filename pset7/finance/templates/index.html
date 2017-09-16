@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table border = "1" cellpadding = "5" cellspacing = "5">
+        <tr>
+            <th>
+                <h4>Symbol</h4>
+            </th>
+            <th>
+                <h4>Quantity</h4>
+            </th>
+            <th>
+                <h4>Price</h4>
+            </th>
+            <th>
+                <h4>Value</h4>
+            </th>
+        </tr>
+    {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction }}</td>
+            <td>{{ transactions[transaction]["Shares_boughtorsold"] }}</td>
+            <td>{{ transactions[transaction]["Price"] }}</td>
+            <td>{{ transactions[transaction]["Shares_boughtorsold"] * transactions[transaction]["Price"] }}</td>
+        </tr>
+    {% endfor %}
+        <tr>
+            <td colspan = "3"> <b>Cash:</b></td>
+            <td><b> {{ cash }} </b></td>
+        </tr>
+        <tr>
+            <td colspan = "3"> <b>Total (including shares):</b></td>
+            <td><b> {{ total }} </b></td>
+        </tr>
+    </table>
+{% endblock %}
